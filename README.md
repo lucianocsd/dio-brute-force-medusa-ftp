@@ -135,6 +135,7 @@ Usei um servidor FTP existente dentro da VM Metasploitable como alvo, simulando 
 
 ==== Enumeração
 
+
 Primeira etapa: enumeração de serviços com o **nmap**. Para verificar a porta 21 (FTP):
 
 ```bash
@@ -151,6 +152,7 @@ Essa informação a respeito da versão do serviço é extremamente importante, 
 > Como o foco é o brute force com Medusa, não irei me aprofundar no `nmap`. Ele pode, contudo, fornecer muitas outras informações úteis. Mais informações em: [nmap.org](https://nmap.org/download)
 
 ==== Listas
+
 
 O Medusa utiliza listas de usuários e senhas para realizar tentativas de combinações. Essas listas podem ser criadas manualmente ou obtidas de fontes públicas (É importante sempre respeitar a legalidade). Para este teste eu criei listas simples:
 
@@ -310,24 +312,27 @@ enum4linux -a 92.168.56.101 | tee enum4_output.txt
 
 <img width="1004" height="540" alt="enum4linux" src="https://github.com/user-attachments/assets/fbef7eb8-d610-4c5f-aedf-8f38980f7fb0" />
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 | Flag  | Ação                                                            |
 | ----  | --------------------------------------------------------------  |
 | *-a*  | Testa todas as técnicas possíveis de enumeração.                |
 | *tee* | Grava o arquivo com as informações extraídas e exibe em tela.   |
 
+<img width="917" height="410" alt="image" src="https://github.com/user-attachments/assets/cebefb8e-4650-4869-a848-efe06ee58a38" />
+> RID =  Identificador real de um usuário no sistema.
 
 Para acessarmos o arquivo gerado, usamos:
 ```bash
 less enum4_output.txt
 ```
 
-> RID =  Identificador real de um usuário no sistema.
+
 
 ---
 
 ==== Criando uma wordlist com usuários e senhas (Utilizando a técnica de Password Spraying)
+
 
 ```bash
 echo -e "user\nmsfadmin\nservice" > smb_users.txt
@@ -339,7 +344,7 @@ echo -e "password\n123456\nWelcome123\nmsfadmin" > senhas_spray.txt
 ```
 
 
-> As senhas utilizadas que foram utilizadas são apenas um teste. No conteúdo desse arquivo poderíamos utilizar uma lista maior e mais elaborada, a fim de obter mais sucesso nas tentativas de exploração de vulnerabilidade.
+> As senhas que foram utilizadas são apenas um teste. No conteúdo desse arquivo poderíamos utilizar uma lista maior e melhor pensada, a fim de obter mais sucesso nas tentativas de exploração de vulnerabilidade.
 
 
 ---
@@ -359,7 +364,7 @@ medusa -h 192.168.56.101 -U smb_users.txt -P senhas.spray.txt -M smbnt -t 2 -T 5
 
 ==== Considerações finais (ética e escopo)
 
-O teste proposto nestes tópicos foram unicamente testados/realizados em ambiente controlado e de testes (Metasploitable) com finalidade educacional. **Não realize varreduras ou ataques em sistemas de terceiros sem autorização prévia**. Em um portfólio, deixe explícito o escopo do teste, os limites e as autorizações.
+O teste proposto nestes tópicos foram realizados em ambiente controlado e de testes (Metasploitable) com finalidade educacional. **Não realize varreduras ou ataques em sistemas de terceiros sem autorização prévia**. Em um portfólio, deixe explícito o escopo do teste, os limites e as autorizações.
 
 
 
