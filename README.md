@@ -268,7 +268,7 @@ medusa -h 192.168.56.101 -U users.txt -P pass.txt -M http \
 
 == Mitigação da Falha
 
-A seguir, recomendações para mitigar ataques de força bruta contra formulários WEB:
+Algumas das recomendações possíveis para mitigar ataques de força bruta contra formulários WEB:
 
 1. **Usar valores únicos por sessão:** O objetivo é ter certeza que cada sessão ou requisição seja única.
 2. **Utilização de Captcha:** É um mecanismo de segurança muito usado nos dias de hoje, que basicamente exige uma prova de que a ação está sendo realizada por um humano e não um robô.
