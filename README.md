@@ -42,7 +42,7 @@ sudo apt update
 sudo apt install medusa
 ```
 
-Para ter certeza de que o Medusa está funcionando corretamente, abra o seu terminal e digite o comando "medusa". Se tudo tiver corrido bem na instalação, o programa vai mostrar, sem demora, o menu de ajuda. Nele, você encontra as opções e parâmetros, o que indica que está tudo certo para continuar.
+Para ter certeza de que o Medusa está funcionando corretamente, abra o seu terminal e digite o comando "medusa". Se tudo tiver corrido bem na instalação, o programa irá mostrar o menu de ajuda. Nele, será possível encontrar as opções e parâmetros, o que indica que está tudo certo para continuar.
 
 
 <img width="1016" height="627" alt="518774393-83c06f48-d071-493b-8ec9-9dab6ced4ff7" src="https://github.com/user-attachments/assets/601b8863-5728-466d-9378-48afcabea75d" />
