@@ -75,7 +75,7 @@ Existem outros parâmetros específicos para cada protocolo. Consulte o manual:
 Para montar um laboratório seguro para os estudos, eu criei duas máquinas virtuais no VirtualBox. 
 O Kali Linux está fazendo o papel do atacante, e o Metasploitable é o nosso alvo para os testes.
 
-======== VirtualBox 
+==== VirtualBox 
 
 Software gratuito e multiplataforma para criar/gerenciar máquinas virtuais. Permite testar sistemas com segurança.
 
@@ -83,7 +83,7 @@ Software gratuito e multiplataforma para criar/gerenciar máquinas virtuais. Per
 
 *Mais informações:* [*VirtualBox*](https://www.virtualbox.org/)
 
-======== Kali Linux
+==== Kali Linux
 
 É uma distribuição Linux voltada para testes de penetração e análise forense digital. Pode ser usada via ISO ou importando a VM pronta para VirtualBox disponível no site.
 
@@ -95,7 +95,7 @@ Após criar a VM, nas configurações de **Network** configure o adaptador como 
 
  *Mais informações:* [*Kali Linux*](https://www.kali.org/get-kali/#kali-platforms)
 
-======== Metasploitable
+==== Metasploitable
 
 Metasploitable é uma máquina virtual intencionalmente vulnerável, usada para treinamentos. O arquivo baixado vem como um "disco virtual", com a extensão ".vdi ou .vmdk"
 Com ele em mãos, crie uma VM no VirtualBox do tipo Linux/Ubuntu e, na aba **Storage**, substitua o disco virtual pelo `Metasploitable.vmdk`.
@@ -113,7 +113,7 @@ Configure a rede da VM do Metasploitable2 também como **Host-Only** e inicie a 
  *Mais informações e Download:* [*Metasploitable*](https://sourceforge.net/projects/metasploitable/)
 
 
-======== Teste de Conexão
+==== Teste de Conexão
 
 No Metasploitable, consulte o IP da VM com `ifconfig`. No meu caso: `192.168.56.101`. No Kali, teste com:
 
@@ -133,7 +133,7 @@ A rede estará corretamente comunicável quando houver resposta no comando acima
 
 Usei um servidor FTP existente dentro da VM Metasploitable como alvo, simulando um cenário de avaliação em um servidor antigo.
 
-======== Enumeração
+==== Enumeração
 
 Primeira etapa: enumeração de serviços com o **nmap**. Para verificar a porta 21 (FTP):
 
@@ -150,7 +150,7 @@ Essa informação a respeito da versão do serviço é extremamente importante, 
 > Observação: 
 > Como o foco é o brute force com Medusa, não irei me aprofundar no `nmap`. Ele pode, contudo, fornecer muitas outras informações úteis. Mais informações em: [nmap.org](https://nmap.org/download)
 
-======== Listas
+==== Listas
 
 O Medusa utiliza listas de usuários e senhas para realizar tentativas de combinações. Essas listas podem ser criadas manualmente ou obtidas de fontes públicas (É importante sempre respeitar a legalidade). Para este teste eu criei listas simples:
 
@@ -159,7 +159,7 @@ echo -e 'user\nmsfadmin\nadmin\nroot' > users.txt
 echo -e '123456\npassword\nqwerty\nmsfadmin' > passwords.txt
 ```
 
-======== Ataque
+==== Ataque
 
 Com os arquivos criados, executei:
 
@@ -343,7 +343,7 @@ echo -e "password\n123456\nWelcome123\nmsfadmin" > senhas_spray.txt
 
 ---
 
-====Executando o Medusa novamente
+==== Executando o Medusa novamente
 
 ```bash
 medusa -h 192.168.56.101 -U smb_users.txt -P senhas.spray.txt -M smbnt -t 2 -T 50
