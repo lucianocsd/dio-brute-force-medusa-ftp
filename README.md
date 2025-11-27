@@ -98,7 +98,7 @@ Após criar a VM, nas configurações de **Network** configure o adaptador como 
 ==== Metasploitable
 
 Metasploitable é uma máquina virtual intencionalmente vulnerável, usada para treinamentos. O arquivo baixado vem como um "disco virtual", com a extensão ".vdi ou .vmdk"
-Com ele em mãos, crie uma VM no Virtual Box do tipo Linux/Ubuntu e, na aba **Storage**, substitua o disco virtual pelo `Metasploitable.vmdk`.
+Com ele em mãos, crie uma VM no VirtualBox do tipo Linux/Ubuntu e, na aba **Storage**, substitua o disco virtual pelo `Metasploitable.vmdk`.
 
 <img width="890" height="509" alt="disk" src="https://github.com/user-attachments/assets/f9edc4e7-3c67-4358-ac29-658ca48ccd4f" />
 
