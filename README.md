@@ -172,6 +172,8 @@ medusa -h 192.168.56.101 -U users.txt -P password -M ftp -t 6
 
 
 Com 6 threads, o Medusa testou as combinações e retornou uma entrada com `ACCOUNT FOUND` / `SUCCESS` para uma combinação válida.
+<img width="1046" height="20" alt="image" src="https://github.com/user-attachments/assets/17024b2d-022d-45c2-a66e-a8f79bcc6c4a" />
+
 
 Em seguida, testei o acesso FTP:
 
