@@ -280,7 +280,7 @@ Algumas das recomendações possíveis para mitigar ataques de força bruta cont
 
 # Ataques com enumeração contra serviço SMB
 
-Geralmente, o foco desses ataques são geralmente ambientes corporativos, explorando vulnerabilidade de servidores de arquivo por exemplo.
+Geralmente, o foco desses ataques são ambientes corporativos, explorando vulnerabilidade de servidores de arquivo por exemplo.
 
 > Podemos entender o SMB como um tipo de "porta de entrada" para compartilhamentos de recursos na rede interna.
 
