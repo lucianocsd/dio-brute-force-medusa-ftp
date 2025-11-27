@@ -4,7 +4,7 @@
 
 Este relatório documenta um exercício controlado de segurança ofensiva, com o propósito de demonstrar a eficácia de um ataque de força bruta contra o serviço FTP de um servidor vulnerável (Metasploitable2), utilizando a ferramenta Medusa.
 
-O teste visa:
+Nosso ambiente de testes possui:
 
 > Virtualização: Oracle VirtualBox.
 
