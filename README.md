@@ -189,7 +189,7 @@ A demonstração ilustra como uma pessoa mal intencionada pode comprometer um se
 
 == Mitigação da Falha
 
-A seguir, recomendações para mitigar ataques de força bruta contra serviços FTP em um servidor:
+Algumas das recomendações possíveis para mitigar ataques de força bruta contra serviços FTP em um servidor:
 
 1. **Desligue o FTP:** Se você realmente não precisar do serviço de FTP, a melhor coisa a fazer é desativá-lo completamente.
 2. **Mude para SFTP ou FTPS**: O FTP normal é inseguro. Se você precisa transferir arquivos, migre para o SFTP (FTP Seguro). É a melhor opção! Se não puder migrar, ative o FTPS (que usa criptografia TLS/SSL) como segunda melhor alternativa.
