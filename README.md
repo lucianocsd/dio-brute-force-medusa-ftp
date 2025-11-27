@@ -263,7 +263,7 @@ medusa -h 192.168.56.101 -U users.txt -P pass.txt -M http \
 | *-M* | Seleciona o módulo do protocolo a ser utilizado (neste caso foi 'http').         |
 | *-m PAGE* | Informamos aqui o caminho do formulário.                                    |
 | *-m FORM* | É o corpo da requisição, usamos cada linha do arquivo como credenciais.     |
-| *-m FAIL* | informamos ao medusa qual a resposta esperada para uma tentativa com falha. |
+| *-m FAIL* | Informamos ao medusa qual a resposta esperada para uma tentativa com falha. |
 | *-t* | Controla o número de threads para tentativas simultâneas (atual: 6).            |
 
 ---
@@ -294,9 +294,8 @@ técnica chamada **PASSWORD SPRAYING**.
 
 ==== Simulação de Cenário 
 
-Simulando um cenário comum, de um ambiente corporativo mal configurado. 
+>Simulando um cenário comum, de um ambiente corporativo mal configurado. 
 
-> Nota: Ainda iremos usar o ambiente do Metasploitable e Kali Linux, nosso ambiente de testes. 
 
 Cenário proposto: Descobrir quais portas realmente existem e quais levam a lugares úteis para o atacante.
 Indicado fazer isso, pois se realizarmos varreduras e ir testando em todas as portas disponíveis ou locais vulneráveis, iremos perder tempo e ainda ser descoberto.
