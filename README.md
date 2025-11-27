@@ -42,7 +42,8 @@ sudo apt install medusa
 
 Para ter certeza de que o Medusa está funcionando corretamente, abra o seu terminal e digite o comando "medusa". Se tudo tiver corrido bem na instalação, o programa vai mostrar, sem demora, o menu de ajuda. Nele, você encontra as opções e parâmetros, o que indica que está tudo certo para continuar.
 
-<img width="1016" height="627" alt="image" src="https://github.com/user-attachments/assets/83c06f48-d071-493b-8ec9-9dab6ced4ff7" />
+
+<img width="1016" height="627" alt="518774393-83c06f48-d071-493b-8ec9-9dab6ced4ff7" src="https://github.com/user-attachments/assets/601b8863-5728-466d-9378-48afcabea75d" />
 
 
 == Sintaxe
@@ -86,7 +87,8 @@ Software gratuito e multiplataforma para criar/gerenciar máquinas virtuais. Per
 
 Após criar a VM, nas configurações de **Network** configure o adaptador como **Host-Only Adapter** para que Kali e Metasploitable fiquem na mesma rede isolada.
 
-<img width="886" height="349" alt="image" src="https://github.com/user-attachments/assets/2fb75ce0-c7f7-40a5-8230-cf177332132b" />
+<img width="886" height="349" alt="kali" src="https://github.com/user-attachments/assets/443debf8-97df-480d-a853-76c3d424ec57" />
+
 
 
  *Mais informações:* [*Kali Linux*](https://www.kali.org/get-kali/#kali-platforms)
@@ -96,11 +98,12 @@ Após criar a VM, nas configurações de **Network** configure o adaptador como 
 Metasploitable é uma máquina virtual intencionalmente vulnerável, usada para treinamentos. O arquivo baixado vem como um "disco virtual", com a extensão ".vdi ou .vmdk"
 Com ele em mãos, crie uma VM no Virtual Box do tipo Linux/Ubuntu e, na aba **Storage**, substitua o disco virtual pelo `Metasploitable.vmdk`.
 
-<img width="890" height="509" alt="image" src="https://github.com/user-attachments/assets/8d0d2841-2489-4852-b16e-8d2549d3f291" />
+<img width="890" height="509" alt="disk" src="https://github.com/user-attachments/assets/f9edc4e7-3c67-4358-ac29-658ca48ccd4f" />
+
 
 Na aba System, altere a ordem de boot(inicialização), deixe selecionado a opção **Hard Disk**, para que a máquina inicie pelo disco mencionado acima.
 
-<img width="884" height="482" alt="image" src="https://github.com/user-attachments/assets/c444d818-40c5-4a73-a316-c6e69adf496e" />
+<img width="884" height="482" alt="order boot" src="https://github.com/user-attachments/assets/81593907-5b77-47f4-a1cd-d753bc827a44" />
 
 
 Configure a rede da VM do Metasploitable2 também como **Host-Only** e inicie a VM. Login da Máquina Virtual = Usuário: msfadmin / Senha: msfadmin.
@@ -118,7 +121,8 @@ ping -c 6 192.168.56.101
 
 A rede estará corretamente comunicável quando houver resposta no comando acima, exemplificado abaixo:
 
-<img width="523" height="272" alt="image" src="https://github.com/user-attachments/assets/809d206b-0d13-420d-beeb-7f51a751b3b5" />
+
+<img width="523" height="272" alt="resposta-ping" src="https://github.com/user-attachments/assets/240f6506-443d-4dbb-86b0-e814d6e1543f" />
 
 
 ---
@@ -137,7 +141,7 @@ nmap -sV -p 21 192.168.56.101
 
 O parâmetro `-p 21` especifica a porta e `-sV` tenta identificar a versão do serviço.
 
-<img width="1060" height="360" alt="image" src="https://github.com/user-attachments/assets/43fb117e-4f24-4a1f-b5b2-fe69a5ec16e9" />
+<img width="1060" height="360" alt="nmap" src="https://github.com/user-attachments/assets/faad3b29-8d24-4a97-8640-8a2d4e2aa6ac" />
 
 Essa informação a respeito da versão do serviço é extremamente importante, pois indica potenciais vulnerabilidades conhecidas (exemplo: [CVEs](https://nvd.nist.gov/vuln/detail/CVE-2011-2523)) que podem ser pesquisadas. No momento, foquei apenas no ataque de força bruta, não explorei essa vulnerabilidade
 
@@ -161,7 +165,8 @@ Com os arquivos criados, executei:
 medusa -h 192.168.56.101 -U users.txt -P password -M ftp -t 6
 ```
 
-<img width="1061" height="588" alt="image" src="https://github.com/user-attachments/assets/13464bc0-e5cf-4e8f-a490-b267381551bf" />
+<img width="1061" height="588" alt="medusa1" src="https://github.com/user-attachments/assets/450ea5d1-ac4b-4d24-b375-e6b696e21ef3" />
+
 
 
 Com 6 threads, o Medusa testou as combinações e retornou uma entrada com `ACCOUNT FOUND` / `SUCCESS` para uma combinação válida.
@@ -172,7 +177,8 @@ Em seguida, testei o acesso FTP:
 ftp 192.168.56.101
 ```
 
-<img width="319" height="124" alt="image" src="https://github.com/user-attachments/assets/a81649dd-84eb-4696-806a-c5105b0501f6" />
+<img width="319" height="124" alt="ftp-conected" src="https://github.com/user-attachments/assets/090b87e0-f2f3-4982-804e-e70754cf5d9d" />
+
 
 
 A demonstração ilustra como uma pessoa mal intencionada pode comprometer um serviço exposto e configurado inadequadamente, de maneira automatizada e relativamente rápida.
@@ -202,7 +208,7 @@ A seguir, recomendações para mitigar ataques de força bruta contra serviços 
 Aqui vamos automatizar o script no medusa, para que ele realize a tentativa "forçada" de entrada em um formulário web. 
 Em nossa VM do metasploitable existe um serviço de web, no link [*192.168.56.101/dvwa/login.php*](192.168.56.101/dvwa/login.php), chamado **Damn Vulnerable Web App (DVWA)**.
 
-<img width="1084" height="748" alt="image" src="https://github.com/user-attachments/assets/08bc62a1-9350-468b-9f8b-a9332f99618c" />
+
 
 
 Acessando esse endereço em nossa máquina atacante com o Kali Linux, e já dentro da página, acessamos a ferramenta de Desenvolvedor do navegador (atalho.: TECLA F12 - Microsoft Edge). 
@@ -211,7 +217,6 @@ Nela, podemos ter acesso a informações de conexões (entrada e saída), usando
 No exemplo, usamos o usuário: luck, a senha: 123:
 
 
-<img width="695" height="369" alt="image" src="https://github.com/user-attachments/assets/2c1ff877-d510-4e7d-bd96-6b3d6bc5e395" />
 
 
 Na página é possível ver uma mensagem de erro, “Login failed”. Podemos estrategicamente configurar o Medusa para indicar que houve falha ao testar a senha.
@@ -242,7 +247,8 @@ medusa -h 192.168.56.101 -U users.txt -P pass.txt -M http \
 -m 'FAIL=Login failed' -t 6
 ```
 
-<img width="1078" height="677" alt="image" src="https://github.com/user-attachments/assets/c518ac89-ad6f-4744-aee5-97695e82c671" />
+<img width="1078" height="677" alt="form-medusa" src="https://github.com/user-attachments/assets/c97cde7e-8aca-4aa7-aed2-fa80239071fc" />
+
 
 
 | Flag | Ação                                                                             |
@@ -299,8 +305,8 @@ A melhor estratégia é focar onde realmente é útil conseguir um ataque.
 enum4linux -a 92.168.56.101 | tee enum4_output.txt
 ```
 
+<img width="1004" height="540" alt="enum4linux" src="https://github.com/user-attachments/assets/fbef7eb8-d610-4c5f-aedf-8f38980f7fb0" />
 
-<img width="1004" height="540" alt="image" src="https://github.com/user-attachments/assets/9d0ed3af-4371-49a1-9366-0954e7d7b47d" />
 
 
 | Flag  | Ação                                                            |
@@ -341,7 +347,8 @@ echo -e "password\n123456\nWelcome123\nmsfadmin" > senhas_spray.txt
 medusa -h 192.168.56.101 -U smb_users.txt -P senhas.spray.txt -M smbnt -t 2 -T 50
 ```
 
-<img width="1087" height="530" alt="image" src="https://github.com/user-attachments/assets/35b20eaf-bb04-4020-9a27-0a1d69932b98" />
+<img width="1087" height="530" alt="medusa2" src="https://github.com/user-attachments/assets/773ef4b5-6bb6-40f5-beb5-92a707afe18c" />
+
 
 
 ---
