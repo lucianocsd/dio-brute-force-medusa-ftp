@@ -27,11 +27,11 @@ A técnica de força bruta consiste em testar massivamente combinações de usu�
 
 ---
 
-== Medusa
+==== Medusa
 
 Medusa representa uma solução de código aberto para ataques de força bruta, projetada para ser ágil por meio de processamento paralelo. Criada para avaliações de segurança, possibilita que especialistas verifiquem a robustez de sistemas contra invasões por senhas, oferecendo suporte flexível a vários protocolos, incluindo FTP, SSH e RDP. A finalidade principal é descobrir senhas pouco seguras e brechas de segurança antes que possam ser utilizadas indevidamente.
 
-== Instalação
+==== Instalação
 
 Para ilustrar, recorri ao Kali Linux, uma versão do sistema operacional voltada para a área de segurança, que já vem com o Medusa instalado, facilitando a realização dos testes.
 
@@ -48,7 +48,7 @@ Para ter certeza de que o Medusa está funcionando corretamente, abra o seu term
 <img width="1016" height="627" alt="518774393-83c06f48-d071-493b-8ec9-9dab6ced4ff7" src="https://github.com/user-attachments/assets/601b8863-5728-466d-9378-48afcabea75d" />
 
 
-== Sintaxe
+==== Sintaxe
 
 Sintaxe básica de uso:
 
@@ -70,12 +70,12 @@ Existem outros parâmetros específicos para cada protocolo. Consulte o manual:
 
 ---
 
-== Configuração do Ambiente 
+==== Configuração do Ambiente 
 
 Para montar um laboratório seguro para os estudos, eu criei duas máquinas virtuais no VirtualBox. 
 O Kali Linux está fazendo o papel do atacante, e o Metasploitable é o nosso alvo para os testes.
 
-==== VirtualBox 
+======== VirtualBox 
 
 Software gratuito e multiplataforma para criar/gerenciar máquinas virtuais. Permite testar sistemas com segurança.
 
@@ -83,7 +83,7 @@ Software gratuito e multiplataforma para criar/gerenciar máquinas virtuais. Per
 
 *Mais informações:* [*VirtualBox*](https://www.virtualbox.org/)
 
-==== Kali Linux
+======== Kali Linux
 
 É uma distribuição Linux voltada para testes de penetração e análise forense digital. Pode ser usada via ISO ou importando a VM pronta para VirtualBox disponível no site.
 
@@ -95,7 +95,7 @@ Após criar a VM, nas configurações de **Network** configure o adaptador como 
 
  *Mais informações:* [*Kali Linux*](https://www.kali.org/get-kali/#kali-platforms)
 
-==== Metasploitable
+======== Metasploitable
 
 Metasploitable é uma máquina virtual intencionalmente vulnerável, usada para treinamentos. O arquivo baixado vem como um "disco virtual", com a extensão ".vdi ou .vmdk"
 Com ele em mãos, crie uma VM no VirtualBox do tipo Linux/Ubuntu e, na aba **Storage**, substitua o disco virtual pelo `Metasploitable.vmdk`.
@@ -113,7 +113,7 @@ Configure a rede da VM do Metasploitable2 também como **Host-Only** e inicie a 
  *Mais informações e Download:* [*Metasploitable*](https://sourceforge.net/projects/metasploitable/)
 
 
-==== Teste de Conexão
+======== Teste de Conexão
 
 No Metasploitable, consulte o IP da VM com `ifconfig`. No meu caso: `192.168.56.101`. No Kali, teste com:
 
@@ -129,11 +129,11 @@ A rede estará corretamente comunicável quando houver resposta no comando acima
 
 ---
 
-== Exemplo de Uso
+==== Exemplo de Uso
 
 Usei um servidor FTP existente dentro da VM Metasploitable como alvo, simulando um cenário de avaliação em um servidor antigo.
 
-==== Enumeração
+======== Enumeração
 
 Primeira etapa: enumeração de serviços com o **nmap**. Para verificar a porta 21 (FTP):
 
@@ -150,7 +150,7 @@ Essa informação a respeito da versão do serviço é extremamente importante, 
 > Observação: 
 > Como o foco é o brute force com Medusa, não irei me aprofundar no `nmap`. Ele pode, contudo, fornecer muitas outras informações úteis. Mais informações em: [nmap.org](https://nmap.org/download)
 
-==== Listas
+======== Listas
 
 O Medusa utiliza listas de usuários e senhas para realizar tentativas de combinações. Essas listas podem ser criadas manualmente ou obtidas de fontes públicas (É importante sempre respeitar a legalidade). Para este teste eu criei listas simples:
 
@@ -159,7 +159,7 @@ echo -e 'user\nmsfadmin\nadmin\nroot' > users.txt
 echo -e '123456\npassword\nqwerty\nmsfadmin' > passwords.txt
 ```
 
-==== Ataque
+======== Ataque
 
 Com os arquivos criados, executei:
 
@@ -187,7 +187,7 @@ A demonstração ilustra como uma pessoa mal intencionada pode comprometer um se
 
 ---
 
-== Mitigação da Falha
+==== Mitigação da Falha
 
 Algumas das recomendações possíveis para mitigar ataques de força bruta contra serviços FTP em um servidor:
 
@@ -234,7 +234,7 @@ Para explorar a vulnerabilidade, usando força bruta em formulário WEB, devemos
 
 ---
  
-== Forçando o Ataque ao formulário, wordlist.
+==== Forçando o Ataque ao formulário, wordlist.
 
 ```bash
 echo -e 'user\nmsfadmin\nadmin\nroot' > users.txt
@@ -266,7 +266,7 @@ medusa -h 192.168.56.101 -U users.txt -P pass.txt -M http \
 
 ---
 
-== Mitigação da Falha
+==== Mitigação da Falha
 
 Algumas das recomendações possíveis para mitigar ataques de força bruta contra formulários WEB:
 
@@ -290,7 +290,7 @@ técnica chamada **PASSWORD SPRAYING**.
 
 ---
 
-== Simulação de Cenário 
+==== Simulação de Cenário 
 
 Simulando um cenário comum, de um ambiente corporativo mal configurado. 
 
@@ -326,7 +326,7 @@ less enum4_output.txt
 
 ---
 
-== Criando uma wordlist com usuários e senhas (Utilizando a técnica de Password Spraying)
+==== Criando uma wordlist com usuários e senhas (Utilizando a técnica de Password Spraying)
 
 ```bash
 echo -e "user\nmsfadmin\nservice" > smb_users.txt
@@ -343,7 +343,7 @@ echo -e "password\n123456\nWelcome123\nmsfadmin" > senhas_spray.txt
 
 ---
 
-==Executando o Medusa novamente
+====Executando o Medusa novamente
 
 ```bash
 medusa -h 192.168.56.101 -U smb_users.txt -P senhas.spray.txt -M smbnt -t 2 -T 50
@@ -356,7 +356,7 @@ medusa -h 192.168.56.101 -U smb_users.txt -P senhas.spray.txt -M smbnt -t 2 -T 5
 ---
 
 
-== Considerações finais (ética e escopo)
+==== Considerações finais (ética e escopo)
 
 O teste proposto nestes tópicos foram unicamente testados/realizados em ambiente controlado e de testes (Metasploitable) com finalidade educacional. **Não realize varreduras ou ataques em sistemas de terceiros sem autorização prévia**. Em um portfólio, deixe explícito o escopo do teste, os limites e as autorizações.
 
